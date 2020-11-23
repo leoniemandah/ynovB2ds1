@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Monster Products
+{% endblock %}
+
+{% block body %}
+	{% for produit in produit %}
+		<article>
+			<div class="card mb-3" style="max-width: 540px;">
+				<div class="row no-gutters">
+					<div class="col-md-4">
+						<img src="{{produit.image}}" class="card-img" alt="">
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<h5 class="card-title">{{produit.name}}</h5>
+							<p class="card-text">{{ produit.created | date('d/m/Y') }}</p>
+							<a href="{{ path('show', {'id':produit.id}) }}" class="btn btn-primary">En savoir +</a>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</article>
+	{% endfor %}
+
+{% endblock %}
